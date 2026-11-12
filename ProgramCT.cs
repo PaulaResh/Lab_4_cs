@@ -29,7 +29,7 @@ namespace CollectionsTasks
                 studentsFile);
 
             Console.WriteLine(
-                "\n[Нажмите любую клавишу...]");
+                "\nНажмите любую клавишу...");
             Console.ReadKey();
         }
     }
