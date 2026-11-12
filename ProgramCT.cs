@@ -9,9 +9,9 @@ namespace CollectionsTasks
             Console.OutputEncoding =
                 System.Text.Encoding.UTF8;
 
-            //CollectionsTasks.Task1ListRemove();
-            //CollectionsTasks.Task2LinkedListReverse();
-            //CollectionsTasks.Task3HashSetSchools();
+            CollectionsTasks.Task1ListRemove();
+            CollectionsTasks.Task2LinkedListReverse();
+            CollectionsTasks.Task3HashSetSchools();
 
             // Задание 4
             string textFile = "russian.txt";
