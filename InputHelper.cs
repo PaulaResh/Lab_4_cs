@@ -1,27 +1,26 @@
 ﻿using System;
 
-namespace CollectionsTasks
+namespace TimeClass
 {
     public static class InputHelper
     {
-        public static int ReadInt(
+        public static byte ReadByte(
             string prompt = "",
-            bool allowNegative = true)
+            byte max = 255)
         {
             while (true)
             {
                 Console.Write(prompt);
                 string input = Console.ReadLine();
 
-                if (int.TryParse(
-                        input, out int result))
+                if (byte.TryParse(
+                        input, out byte result))
                 {
-                    if (!allowNegative
-                        && result < 0)
+                    if (result > max)
                     {
                         Console.WriteLine(
-                            "Ошибка: " +
-                            "неотрицательное.");
+                            $"Ошибка: " +
+                            $"максимум {max}.");
                         continue;
                     }
                     return result;
@@ -53,27 +52,6 @@ namespace CollectionsTasks
                     Console.WriteLine(
                         "Ошибка: " +
                         "некорректное число.");
-                }
-            }
-        }
-
-        public static string ReadString(
-            string prompt = "")
-        {
-            while (true)
-            {
-                Console.Write(prompt);
-                string input = Console.ReadLine();
-
-                if (!string.IsNullOrWhiteSpace(input))
-                {
-                    return input;
-                }
-                else
-                {
-                    Console.WriteLine(
-                        "Ошибка: " +
-                        "непустая строка.");
                 }
             }
         }
