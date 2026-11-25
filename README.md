@@ -1,4 +1,4 @@
-<img width="387" height="256" alt="image" src="https://github.com/user-attachments/assets/a553693e-be3c-4c91-ac9a-8c1e68f8d82b" />### Решетникова Полина ЛА-1 Лабораторная №4
+### Решетникова Полина ЛА-1 Лабораторная №4
 # ЗАДАНИЕ 1.
 
 ## ТЕКСТ ЗАДАЧИ:
