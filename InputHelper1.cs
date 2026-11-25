@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 
 namespace CollectionsTasks
 {
-    public static class InputHelperCT
+    public static class InputHelper1
     {
         public static int ReadInt(
             string prompt = "",
@@ -16,27 +16,20 @@ namespace CollectionsTasks
                 if (int.TryParse(
                         input, out int result))
                 {
-                    if (!allowNegative
-                        && result < 0)
+                    if (!allowNegative && result < 0)
                     {
                         Console.WriteLine(
-                            "Ошибка: " +
-                            "неотрицательное.");
+                            "Ошибка: неотрицательное.");
                         continue;
                     }
                     return result;
                 }
-                else
-                {
-                    Console.WriteLine(
-                        "Ошибка: " +
-                        "некорректное число.");
-                }
+                Console.WriteLine(
+                    "Ошибка: некорректное число.");
             }
         }
 
-        public static uint ReadUInt(
-            string prompt = "")
+        public static uint ReadUInt(string prompt = "")
         {
             while (true)
             {
@@ -48,17 +41,12 @@ namespace CollectionsTasks
                 {
                     return result;
                 }
-                else
-                {
-                    Console.WriteLine(
-                        "Ошибка: " +
-                        "некорректное число.");
-                }
+                Console.WriteLine(
+                    "Ошибка: некорректное число.");
             }
         }
 
-        public static string ReadString(
-            string prompt = "")
+        public static string ReadString(string prompt = "")
         {
             while (true)
             {
@@ -69,12 +57,8 @@ namespace CollectionsTasks
                 {
                     return input;
                 }
-                else
-                {
-                    Console.WriteLine(
-                        "Ошибка: " +
-                        "непустая строка.");
-                }
+                Console.WriteLine(
+                    "Ошибка: непустая строка.");
             }
         }
     }
