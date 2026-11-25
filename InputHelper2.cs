@@ -1,12 +1,11 @@
-﻿using System;
+using System;
 
 namespace TimeClass
 {
-    public static class InputHelper
+    public static class InputHelper2
     {
         public static byte ReadByte(
-            string prompt = "",
-            byte max = 255)
+            string prompt = "", byte max = 255)
         {
             while (true)
             {
@@ -19,23 +18,17 @@ namespace TimeClass
                     if (result > max)
                     {
                         Console.WriteLine(
-                            $"Ошибка: " +
-                            $"максимум {max}.");
+                            $"Ошибка: максимум {max}.");
                         continue;
                     }
                     return result;
                 }
-                else
-                {
-                    Console.WriteLine(
-                        "Ошибка: " +
-                        "некорректное число.");
-                }
+                Console.WriteLine(
+                    "Ошибка: некорректное число.");
             }
         }
 
-        public static uint ReadUInt(
-            string prompt = "")
+        public static uint ReadUInt(string prompt = "")
         {
             while (true)
             {
@@ -47,12 +40,8 @@ namespace TimeClass
                 {
                     return result;
                 }
-                else
-                {
-                    Console.WriteLine(
-                        "Ошибка: " +
-                        "некорректное число.");
-                }
+                Console.WriteLine(
+                    "Ошибка: некорректное число.");
             }
         }
     }
