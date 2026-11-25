@@ -1,4 +1,4 @@
-### Решетникова Полина ЛА-1 Лабораторная №4
+<img width="387" height="256" alt="image" src="https://github.com/user-attachments/assets/a553693e-be3c-4c91-ac9a-8c1e68f8d82b" />### Решетникова Полина ЛА-1 Лабораторная №4
 # ЗАДАНИЕ 1.
 
 ## ТЕКСТ ЗАДАЧИ:
@@ -6,17 +6,19 @@
 элементы E, если такие есть.
 
 ## АЛГОРИТМ РЕШЕНИЯ:
-1. Считать количество элементов и заполнить List<int>
-   методом Add.
-2. Считать удаляемый элемент E.
-3. В цикле while проверять наличие элемента методом
-   Contains и удалять методом Remove. Remove удаляет
-   только первое вхождение, поэтому цикл нужен для
-   удаления всех повторов.
-4. Вывести список циклом for.
+Метод Task1ListRemove<T> обобщённый, работает с List
+любого типа. В Program заполняется List<string>: тип
+string принимает любой ввод — числа, дробные, текст.
+Элементы добавляются методом Add.
+В цикле while проверка Contains и удаление Remove.
+Remove удаляет только первое вхождение, поэтому цикл
+нужен для удаления всех повторов.
+Цикл while вместо for: при удалении в for элементы
+сдвигаются влево, счётчик растёт, элемент пропускается.
+Вывод циклом for через индексатор.
 
 ## ТЕСТИРОВАНИЕ
-![](https://sun9-62.vkuserphoto.ru/s/v1/ig2/5aeYShwwYCY3p2-44q8Mk53iDASa0QP-2-929S2xSNGbPkvN2fuSfxRx-pbKInuYA96gjOmnNiQlnMC-9kRs8Gsk.jpg?quality=95&as=32x42,48x63,72x95,108x143,160x211,240x317,269x355&from=bu&u=hT2Fm9DHMuiL2hGsc8cNBPx0sOfNLyOtd_94-go2-yQ&cs=269x0)
+![](https://sun9-63.vkuserphoto.ru/s/v1/ig2/lDgdmmyz0L0q44psTPH_PChazGB0CcB3H12QZUTy8dqnh6AP7MItZ2YCrsX3MHOasdIxydX2YAc6mbJZnr-iBWXm.jpg?quality=95&as=32x29,48x43,72x65,108x98,160x145,240x217,333x301&from=bu&cs=333x0)
 
 # ЗАДАНИЕ 2.
 
@@ -24,17 +26,18 @@
 Напечатать в обратном порядке элементы непустого списка L.
  
 ## АЛГОРИТМ РЕШЕНИЯ:
-
-1. Заполнить LinkedList<int> методом AddLast.
-2. Получить последний узел через свойство Last.
-3. В цикле while выводить node.Value и переходить к
-   node.Previous, пока узел не станет null.
-4. Индексация не используется: двусвязный список не
-   поддерживает доступ по индексу, обход идёт по ссылкам.
+Метод Task2LinkedListReverse<T> обобщённый.
+В Program заполняется LinkedList<string> методом AddLast.
+Получается последний узел через свойство Last.
+В цикле while выводится node.Value и выполняется переход
+node = node.Previous, пока узел не станет null.
+Индексация не используется: двусвязный список не
+поддерживает доступ по индексу, обход идёт по ссылкам.
+Сложность O(n), дополнительная память O(1).
 
 
 ## ТЕСТИРОВАНИЕ
-![](https://sun9-84.vkuserphoto.ru/s/v1/ig2/eNdqrOArfq0bwAhPvEszmUviufPNFnOvZPNb_y-2G4epxVFp0uZmS5RFnrS4uhFb5jxJIgbDW2LCt3sJfJtf4iHu.jpg?quality=95&as=32x32,48x48,72x72,108x108,160x160,240x240,274x274&from=bu&u=q1jcRAxsQiXP-bHsGrk_-GAcGor43aAcIsZxwQ7vT0k&cs=274x0)
+![](https://sun9-4.vkuserphoto.ru/s/v1/ig2/HhSXII6uojg7-D8PEHYEWONl3tB930AjIMuY9qy_U9m93SeHvuDgRKRDCFetAOFlQseB0G9g9bWpDwoupaWlCXtM.jpg?quality=95&as=32x21,48x32,72x48,108x71,160x106,240x159,360x238,387x256&from=bu&cs=387x0)
 
 # ЗАДАНИЕ 3.
 
@@ -46,23 +49,26 @@
 3) в каких фирмах ни одно заведение не закупало технику.
 
 ## АЛГОРИТМ РЕШЕНИЯ:
-1. Считать перечень всех фирм в HashSet allFirms.
-2. Для каждого заведения считать его фирмы в отдельный
-   HashSet, сохранить в List<HashSet<string>>.
-3. При вводе фирмы проверять allFirms.Contains: если
-   фирмы нет в перечне, вывести ошибку и запросить
-   ввод повторно.
-4. Вопрос 1: копия первого множества, затем
-   IntersectWith со всеми остальными (пересечение).
-5. Вопрос 2: пустое множество, затем UnionWith со
-   всеми множествами (объединение).
-6. Вопрос 3: копия allFirms, затем ExceptWith с
-   объединением (разность).
+Перечень всех фирм считывается в HashSet<string> allFirms.
+Для каждого заведения создаётся отдельный HashSet внутри
+цикла и сохраняется в List<HashSet<string>>. Создание
+внутри цикла обязательно: HashSet — ссылочный тип, иначе
+все заведения ссылались бы на один объект.
+При вводе фирмы проверяется allFirms.Contains, при
+отсутствии — ошибка и повторный ввод.
+Вопрос 1: копия первого множества, затем IntersectWith
+со всеми остальными (пересечение).
+Вопрос 2: пустое множество, затем UnionWith со всеми
+(объединение).
+Вопрос 3: копия allFirms, затем ExceptWith с объединением
+(разность).
+Все три метода мутируют множество и возвращают void,
+поэтому исходные данные копируются
 
 ## ТЕСТИРОВАНИЕ
-![](https://sun9-38.vkuserphoto.ru/s/v1/ig2/ddZnKDblKmZRbbtPCVk-44VOzCrzYz7RVNY2l98c_YHC3yjgEYxSTQo35l1j5xnKz-OUg7mQRBv4PeJQO9WYP0xY.jpg?quality=95&as=32x21,48x31,72x47,108x70,160x104,240x155,360x233,374x242&from=bu&u=FDEnrb-j98ex9kz7YC-qbaV1WmK0Xb__NjGe_m_tm8k&cs=374x0)
-![](https://sun9-55.vkuserphoto.ru/s/v1/ig2/3XuCqhm42-xvefikUqoWiJ6lKEwCY7CfHVShKaWyKeaZ4aStpLPQCAVbvedr9lXWpJ_goJFKw4YJ1Xrk2YrIIE1z.jpg?quality=95&as=32x27,48x40,72x60,108x91,160x134,240x201,360x302,480x402,540x453,550x461&from=bu&u=TpIMreK7FReAr4h5jFOv7_1eZzw_bK8JQaneTuESBqg&cs=550x0)
-![](https://sun9-46.vkuserphoto.ru/s/v1/ig2/KErfcBNDMUQ0vvybNSmdUT4mCEBZoOviJy5R7eTmeYptifMFkgDZfIgxv4-gbMHsiYmrmm7zvoMmWwKe87OYqovy.jpg?quality=95&as=32x15,48x22,72x33,108x49,160x73,240x109,301x137&from=bu&u=Dpw3uLPOA6gcDnDbUV59f3W7lXAzzGcQljovWJRUWbc&cs=301x0)
+![](https://sun9-53.vkuserphoto.ru/s/v1/ig2/O3U55FGUQoXiKQZKeHG4GG_4C0NZowS2IuArKmQmyN6h-be0Nlj_htBDUys2CRcgi7VnABhX5V0S0oCUjuFlw1Xi.jpg?quality=95&as=32x27,48x40,72x60,108x91,160x134,240x201,278x233&from=bu&u=RKcWeXz_eZElDYTnLrIA6zbC9IIRqVHvwP-KntLz4AQ&cs=278x0)
+![](https://sun9-49.vkuserphoto.ru/s/v1/ig2/6uyV5Ko-likYyoqCiWkrNUKCKHhuca0Q1ds9dPtTrNzQqxRXmvLY8Iq27sbFf6tnPe21dYIkQA7yJ8S_lZ4mD3-t.jpg?quality=95&as=32x47,48x71,72x106,108x160,160x236,240x355,245x362&from=bu&cs=245x0)
+![](https://sun9-68.vkuserphoto.ru/s/v1/ig2/jRzk1ZOUPY8zZkaRdDfs9SBEy0B8-HyccCvnfTc33NjR_uK1edXoQB_zgnEdp-771KBbLNIn_982t1iQWVPZqqdV.jpg?quality=95&as=32x21,48x31,72x47,108x71,160x105,209x137&from=bu&cs=209x0)
 
 # ЗАДАНИЕ 4.
 
@@ -72,21 +78,22 @@
 входят хотя бы в одно слово.
 
 ## АЛГОРИТМ РЕШЕНИЯ:
-1. Отдельный метод FillRussianTextFile создаёт исходный
-   файл с русским текстом через StreamWriter.
-2. Прочитать текст методом File.ReadAllText, привести к
-   нижнему регистру методом ToLower.
-3. Создать HashSet<char> со звонкими согласными:
-   б, в, г, д, ж, з.
-4. Пройти по символам текста циклом for, проверять
-   voiced.Contains и добавлять найденные в HashSet found.
-   HashSet автоматически исключает дубликаты.
-5. Скопировать found в List<char> и отсортировать
-   методом Sort, так как HashSet не хранит порядок.
-6. Вывести отсортированный список.
+Текст вводится с клавиатуры построчно до пустой строки.
+Отдельный метод FillTextFile сохраняет его в файл через
+StreamWriter — требование условия о хранении данных
+в файле.
+Текст читается File.ReadAllText и приводится к нижнему
+регистру методом ToLower.
+Создаётся HashSet<char> со звонкими согласными:
+б, в, г, д, ж, з.
+Циклом for по символам проверяется voiced.Contains,
+найденные буквы добавляются в HashSet found — дубликаты
+исключаются автоматически.
+HashSet не хранит порядок, поэтому содержимое копируется
+в List<char> и сортируется методом Sort.
 
 ## ТЕСТИРОВАНИЕ
-![](https://sun9-56.vkuserphoto.ru/s/v1/ig2/Jl6q-5NrxpXcKLFvcta8oue5VMoWXs2MyZlcUSV1-bwVBHgWOQkUOJSI-NLECsKCfiAiIX54qbjnans7uSYoCoMu.jpg?quality=95&as=32x6,48x10,72x15,108x22,160x32,240x48,360x73,372x75&from=bu&u=xw5szJ1DzF2tSBGoUdZ7ZyakzDQCZkyRykxMyefLh8g&cs=372x0)
+![](https://sun9-45.vkuserphoto.ru/s/v1/ig2/SIJaAXNXwn46Vb1McOPBabz71fv0extfw-gpkYZE3IJDlla6Cml84qXcaPIFfjq0jS-Y6xUvkZywwuEpabdtJ5mM.jpg?quality=95&as=32x7,48x10,72x16,108x24,160x35,240x52,360x79,480x105,540x118,541x118&from=bu&u=F2d84-aL7TGtpjanZmA7Iglik2jprrdAw1frnG5B1aw&cs=541x0)
 
 # ЗАДАНИЕ 5.
 
@@ -97,23 +104,22 @@
 числом 2, третий — с числом 3 и т.д.
 
 ## АЛГОРИТМ РЕШЕНИЯ:
-1. Отдельный метод FillStudentsFile заполняет исходный
-   текстовый файл парами "Фамилия Имя".
-2. Прочитать строки методом File.ReadAllLines.
-3. Создать Dictionary<string, int> counters: ключ —
-   фамилия, значение — счётчик её появлений.
-4. Одним циклом for по всем строкам:
-   - выделить фамилию через IndexOf(' ') и Substring;
-   - если counters.ContainsKey — увеличить счётчик и
-     склеить фамилию с новым значением;
-   - иначе добавить ключ со значением 1, логин равен
-     фамилии.
-5. Вывести массив логинов.
+Данные вводятся с клавиатуры, отдельный метод
+FillStudentsFile записывает их в текстовый файл.
+Строки читаются File.ReadAllLines.
+Создаётся Dictionary<string, int>: ключ — фамилия,
+значение — счётчик появлений.
+Одним циклом for по строкам:
+- фамилия выделяется через IndexOf(' ') и Substring
+  (дешевле Split, не создаёт лишних массивов);
+- если ContainsKey — счётчик увеличивается через
+  индексатор, логин = фамилия + счётчик;
+- иначе counters[surname] = 1, логин = фамилия.
 
 ## ТЕСТИРОВАНИЕ
-![](https://sun9-61.vkuserphoto.ru/s/v1/ig2/JJDL7VofE1iJgcEaadQDQlpOtT3Y92Bc5SBBUMQvDR3AD2u_8zTuu8fmwH0JBEft4BPILwK4tg7DEHu0cFe3Fv2g.jpg?quality=95&as=32x52,48x79,72x118,108x177,160x262,240x393,284x465&from=bu&u=s9QkA-8UP-1oqS32TS8uRQ5bLtXeMujpJNTBw_ZA5HI&cs=284x0)
-![](https://sun9-68.vkuserphoto.ru/s/v1/ig2/gsgKLoL4tRtqQ43OHx1Mg0j90RmakD3X7nIKz-pctUOzA0fFFUVKe9OJJ4fGKAMMd9UcUJEd8LnhVISyddisQPq9.jpg?quality=95&as=32x30,48x44,72x67,108x100,160x148,240x222,303x280&from=bu&u=h7c_IVUSBuQWGOBW-nEc5ICW132HkR5LcOKHg1CxvT0&cs=303x0)
-![](https://sun9-50.vkuserphoto.ru/s/v1/ig2/TaZ6V4109RHmkCpL_rRlHjQbKHBpAPaqFRH7haweeKfH98Nxqt8-lRNeZq22g-lKL5EF-LMbkwVUqTI9PmUUkkjq.jpg?quality=95&as=32x47,48x71,72x107,108x160,160x237,240x356,284x421&from=bu&u=2u1cSHIiT4q_TWP7L9PTGEKdT_IbNbJNmhVDDEE2wlk&cs=284x0)
+![](https://sun9-16.vkuserphoto.ru/s/v1/ig2/Eo7mZb0H12x2-iM_v_l9ZZU2al4jE44JsBH0WEM7tBjkriJDcs6PgDCFkCuEzsj8s_oJ2LzTFF_xnc_l4ybcfSyl.jpg?quality=95&as=32x28,48x41,72x62,108x93,160x138,240x207,304x262&from=bu&u=8ewwEkH9fnLR3-D3x1p89s9ndkVaqZG2FFXjEeCp-JY&cs=304x0)
+![](https://sun9-87.vkuserphoto.ru/s/v1/ig2/N0UrFx_oRmm0SvivJ7qtVeIKs0k5d2eKGkwgifgr5LIt5tUSLWoBNxU_PyRewml6uC4kqRBBb41uIWcZ_MHFiPFR.jpg?quality=95&as=32x18,48x26,72x40,108x59,160x88,240x132,280x154&from=bu&cs=280x0)
+![](https://sun9-62.vkuserphoto.ru/s/v1/ig2/J0z2om5G_cbXFJz06gr66o8X000PCaFio__eNNYqZzXUg7BFSM79rtntR5Tk_szggsTdEc7LvTb5TU7TUabBqhk5.jpg?quality=95&as=32x32,48x48,72x72,108x108,160x160,220x220&from=bu&cs=220x0)
 
 # ЗАДАНИЕ 6.
 
@@ -123,24 +129,21 @@
 к объекту типа Time. Результат должен быть типа Time.
 
 ## АЛГОРИТМ РЕШЕНИЯ:
-1. Приватные поля _hours и _minutes типа byte.
-   Свойства Hours и Minutes раскрыты через явный get,
-   автосвойства не используются.
-2. Конструктор по умолчанию задаёт 00:00.
-3. Конструктор с параметрами проверяет диапазоны:
-   часы 0-23, минуты 0-59, иначе выбрасывает исключение.
-4. Метод AddMinutes(uint mins):
-   - перевести время в общее число минут:
-     hours * 60 + minutes;
-   - прибавить mins;
-   - часы = (total / 60) % 24, переход через полночь;
-   - минуты = total % 60;
-   - вернуть новый объект Time, исходный не изменяется.
-5. Переопределить ToString: вывод в формате ЧЧ:ММ
-   через PadLeft(2, '0').
-6. Тип uint для минут выбран потому, что количество
-   добавляемых минут не может быть отрицательным:
-   проверка выполняется на уровне типа данных.
+Приватные поля _hours и _minutes типа byte.
+Свойства Hours и Minutes через явный get, без автосвойств.
+Конструктор по умолчанию задаёт 00:00.
+Конструктор с параметрами проверяет диапазоны 0-23 и 0-59,
+при нарушении выбрасывает исключение — объект не может
+существовать в некорректном состоянии.
+Метод AddMinutes(uint mins):
+- время переводится в минуты: hours * 60 + minutes;
+- прибавляется mins;
+- часы = (total / 60) % 24, переход через полночь;
+- минуты = total % 60;
+- возвращается новый объект, исходный не изменяется.
+ToString переопределён: формат ЧЧ:ММ через PadLeft(2, '0').
+Тип uint выбран потому, что количество добавляемых минут
+не может быть отрицательным — проверка на уровне типа.
 
 ## ТЕСТИРОВАНИЕ
 ![](https://sun9-16.vkuserphoto.ru/s/v1/ig2/5q9FZpkW3BNfqkjnoLb6nTZZwhJKrZO7pObc-mr0SyeIG7QjwNGBfBsnPZBSErsyHFXS1dMRpfAKG3WQo4kVoB0s.jpg?quality=95&as=32x15,48x22,72x33,108x50,160x74,240x111,306x141&from=bu&u=jaXyknnmBHeiX3-FnUqmYKOAbj6a6LeyjvRokkVbMsQ&cs=306x0)
