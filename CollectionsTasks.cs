@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 
@@ -6,169 +6,135 @@ namespace CollectionsTasks
 {
     public static class CollectionsTasks
     {
-        // ЗАДАНИЕ 1: Удаление элемента из List
-        public static void Task1ListRemove()
+        // ЗАДАНИЕ 1: Обобщенный метод для любого типа T
+        public static void Task1ListRemove<T>(
+            List<T> list, T element)
         {
-            Console.WriteLine(
-                "Задание 1. Удаление элемента");
-            List<int> list = new List<int>();
-
-            int count = InputHelper.ReadInt(
-                "Количество элементов: ", false);
-            for (int i = 0; i < count; i++)
+            Console.Write("Исходный: ");
+            for (int i = 0; i < list.Count; i++)
             {
-                int val = InputHelper.ReadInt(
-                    $"Элемент #{i + 1}: ");
-                list.Add(val);
+                Console.Write(list[i]);
+                if (i < list.Count - 1) 
+                    Console.Write(", ");
             }
-
-            int element = InputHelper.ReadInt(
-                "Элемент E для удаления: ");
+            Console.WriteLine("");
 
             while (list.Contains(element))
             {
                 list.Remove(element);
             }
 
-            Console.WriteLine(
-                "Список после удаления:");
+            Console.Write("После удаления: ");
             for (int i = 0; i < list.Count; i++)
             {
-                Console.Write(list[i] + " ");
+                Console.Write(list[i]);
+                if (i < list.Count - 1) 
+                    Console.Write(", ");
             }
-            Console.WriteLine();
+            Console.WriteLine("\n");
         }
 
-        // ЗАДАНИЕ 2: LinkedList в обратном порядке
-        public static void Task2LinkedListReverse()
-        {
-            Console.WriteLine(
-                "\nЗадание 2. В обратном порядке");
-            LinkedList<int> list =
-                new LinkedList<int>();
-
-            int count = InputHelper.ReadInt(
-                "Количество элементов: ", false);
-            for (int i = 0; i < count; i++)
+        // ЗАДАНИЕ 2: Обобщенный метод для любого типа T
+        public static void Task2LinkedListReverse<T>(
+            LinkedList<T> list)
+        {           
+            Console.Write("Исходный: ");
+            LinkedListNode<T> nodeF = list.First;
+            bool first = true;
+            while (nodeF != null)
             {
-                int val = InputHelper.ReadInt(
-                    $"Элемент #{i + 1}: ");
-                list.AddLast(val);
+                if (!first) Console.Write(", ");
+                Console.Write(nodeF.Value);
+                first = false;
+                nodeF = nodeF.Next;
             }
+            Console.WriteLine();
 
-            Console.WriteLine(
-                "В обратном порядке:");
-            LinkedListNode<int> node =
-                list.Last;
+            Console.Write("Обратный порядок: ");
+            LinkedListNode<T> node = list.Last;
+            first = true;
             while (node != null)
             {
-                Console.Write(node.Value + " ");
+                if (!first) Console.Write(", ");
+                Console.Write(node.Value);
+                first = false;
                 node = node.Previous;
             }
-            Console.WriteLine();
+            Console.WriteLine("\n");
         }
 
-        // ЗАДАНИЕ 3: HashSet про учебные заведения и фирмы
+        // ЗАДАНИЕ 3: HashSet (учебные заведения)
         public static void Task3HashSetSchools()
         {
-            Console.WriteLine(
-                "\nЗадание 3. Про учебные заведения и фирмы");
-            int n = InputHelper.ReadInt(
-                "Кол-во учебных заведений: ",
-                false);
-            int m = InputHelper.ReadInt(
-                "Кол-во компьютерных фирм: ",
-                false);
+            int n = InputHelper1.ReadInt(
+                "Кол-во заведений: ", false);
+            int m = InputHelper1.ReadInt(
+                "Кол-во фирм: ", false);
 
-            // Все фирмы
-            HashSet<string> allFirms =
+            HashSet<string> allFirms = 
                 new HashSet<string>();
-            Console.WriteLine(
-                "Введите названия фирм:");
+            Console.WriteLine("Введите фирмы:");
             for (int i = 0; i < m; i++)
             {
-                string firm =
-                    InputHelper.ReadString(
-                        $"Фирма #{i + 1}: ");
-                allFirms.Add(firm);
+                allFirms.Add(InputHelper1.ReadString(
+                    $"Фирма #{i + 1}: "));
             }
 
-            // Для каждого заведения - свои фирмы
-            List<HashSet<string>> schools =
+            List<HashSet<string>> schools = 
                 new List<HashSet<string>>();
             for (int i = 0; i < n; i++)
             {
-                Console.WriteLine(
-                    $"\nЗаведение #{i + 1}:" +
-                    " введите кол-во фирм:");
-                int k = InputHelper.ReadInt(
+                Console.WriteLine($"\nЗаведение #{i+1}:");
+                int k = InputHelper1.ReadInt(
                     "Кол-во фирм: ", false);
-                HashSet<string> schoolFirms =
+                HashSet<string> schoolFirms = 
                     new HashSet<string>();
+                
                 for (int j = 0; j < k; j++)
                 {
                     string firm;
                     while (true)
                     {
-                        firm = InputHelper.ReadString(
+                        firm = InputHelper1.ReadString(
                             $"Фирма #{j + 1}: ");
-
-                        if (allFirms.Contains(firm))
-                        {
+                        if (allFirms.Contains(firm)) 
                             break;
-                        }
-                        else
-                        {
-                            Console.WriteLine(
-                                "Ошибка: фирма \"" +
-                                firm +
-                                "\" не существует!" +
-                                " Введите из списка:");
-                            PrintSet(allFirms);
-                        }
+                        
+                        Console.WriteLine(
+                            "Ошибка: такой фирмы нет!");
                     }
                     schoolFirms.Add(firm);
                 }
                 schools.Add(schoolFirms);
             }
 
-            // 1. Пересечение всех (каждое закупало)
-            HashSet<string> intersection =
+            HashSet<string> inter = 
                 new HashSet<string>(schools[0]);
             for (int i = 1; i < n; i++)
             {
-                intersection.IntersectWith(
-                    schools[i]);
+                inter.IntersectWith(schools[i]);
             }
 
-            // 2. Объединение всех (хотя бы одно)
-            HashSet<string> union =
+            HashSet<string> union = 
                 new HashSet<string>();
             for (int i = 0; i < n; i++)
             {
                 union.UnionWith(schools[i]);
             }
 
-            // 3. Ни одно не закупало
-            HashSet<string> none =
+            HashSet<string> none = 
                 new HashSet<string>(allFirms);
             none.ExceptWith(union);
 
-            Console.WriteLine(
-                "\n1) Закупало каждое:");
-            PrintSet(intersection);
-
-            Console.WriteLine(
-                "2) Закупало хотя бы одно:");
+            Console.WriteLine("\n1) Каждое:");
+            PrintSet(inter);
+            Console.WriteLine("2) Хотя бы одно:");
             PrintSet(union);
-
-            Console.WriteLine(
-                "3) Не закупало ни одно:");
+            Console.WriteLine("3) Ни одно:");
             PrintSet(none);
         }
 
-        private static void PrintSet(
-            HashSet<string> set)
+        private static void PrintSet(HashSet<string> set)
         {
             if (set.Count == 0)
             {
@@ -182,32 +148,23 @@ namespace CollectionsTasks
             Console.WriteLine();
         }
 
-        // ЗАДАНИЕ 4: Звонкие согласные из файла
+        // ЗАДАНИЕ 4: HashSet (звонкие согласные из файла)
         public static void Task4HashSetLetters(
             string fileName)
-        {
-            Console.WriteLine(
-                "\nЗадание 4. " +
-                "Звонкие согласные");
-
+        {     
             if (!File.Exists(fileName))
             {
-                Console.WriteLine(
-                    "Файл не найден!");
+                Console.WriteLine("Файл не найден!");
                 return;
             }
 
             string text = File.ReadAllText(
                 fileName).ToLower();
+            HashSet<char> voiced = new HashSet<char> {
+                'б', 'в', 'г', 'д', 'ж', 'з'
+            };
+            HashSet<char> found = new HashSet<char>();
 
-            // Звонкие согласные русского языка
-            HashSet<char> voiced =
-                new HashSet<char> {
-                    'б', 'в', 'г', 'д', 'ж', 'з'
-                };
-
-            HashSet<char> found =
-                new HashSet<char>();
             for (int i = 0; i < text.Length; i++)
             {
                 if (voiced.Contains(text[i]))
@@ -216,92 +173,46 @@ namespace CollectionsTasks
                 }
             }
 
-            // Сортируем в алфавитном порядке
-            List<char> sorted =
-                new List<char>(found);
+            List<char> sorted = new List<char>(found);
             sorted.Sort();
 
-            Console.WriteLine(
-                "Звонкие согласные " +
-                "в алфавитном порядке:");
+            Console.Write("Результат: ");
             for (int i = 0; i < sorted.Count; i++)
             {
                 Console.Write(sorted[i] + " ");
             }
             Console.WriteLine();
-
-        }
-        // Заполнение файла текстом
-        public static void FillRussianTextFile(
-            string fileName)
-        {
-            string[] lines = {
-        "В городе стоял большой дом.",
-        "Дети играли во дворе каждый день.",
-        "Жираф гулял по зоопарку важно.",
-        "Зимой выпал белый пушистый снег.",
-        "Гроза гремела над далёким лесом."
-    };
-            using (StreamWriter writer =
-                new StreamWriter(fileName))
-            {
-                for (int i = 0; i < lines.Length; i++)
-                {
-                    writer.WriteLine(lines[i]);
-                }
-            }
-            Console.WriteLine(
-                "Файл " + fileName + " заполнен.");
         }
 
-        // ЗАДАНИЕ 5: Уникальные логины
+        // ЗАДАНИЕ 5: Dictionary (уникальные логины)
         public static void Task5DictionaryLogins(
             string fileName)
-        {
-            Console.WriteLine(
-                "\n=== Задание 5. Логины ===");
-
+        {      
             if (!File.Exists(fileName))
             {
-                Console.WriteLine(
-                    "Файл не найден!");
+                Console.WriteLine("Файл не найден!");
                 return;
             }
 
-            string[] lines =
-                File.ReadAllLines(fileName);
-            int n = lines.Length;
-
-            Dictionary<string, int> counters = //повтор
+            string[] lines = File.ReadAllLines(fileName);
+            Dictionary<string, int> counters = 
                 new Dictionary<string, int>();
+            string[] logins = new string[lines.Length];
 
-            string[] logins = new string[n];
-
-            for (int i = 0; i < n; i++)
+            for (int i = 0; i < lines.Length; i++)
             {
                 string line = lines[i].Trim();
-                if (string.IsNullOrEmpty(line))
-                {
+                if (string.IsNullOrEmpty(line)) 
                     continue;
-                }
 
                 int spaceIdx = line.IndexOf(' ');
-                string surname;
-                if (spaceIdx > 0)
-                {
-                    surname = line.Substring(
-                        0, spaceIdx);
-                }
-                else
-                {
-                    surname = line;
-                }
+                string surname = spaceIdx > 0 ? 
+                    line.Substring(0, spaceIdx) : line;
 
                 if (counters.ContainsKey(surname))
                 {
                     counters[surname]++;
-                    logins[i] = surname +
-                        counters[surname];
+                    logins[i] = surname + counters[surname];
                 }
                 else
                 {
@@ -310,9 +221,8 @@ namespace CollectionsTasks
                 }
             }
 
-            Console.WriteLine(
-                "\nСформированные логины:");
-            for (int i = 0; i < n; i++)
+            Console.WriteLine("Сформированные логины:");
+            for (int i = 0; i < logins.Length; i++)
             {
                 if (logins[i] != null)
                 {
@@ -321,30 +231,29 @@ namespace CollectionsTasks
             }
         }
 
-        // Заполнение файла
-        public static void FillStudentsFile( 
-            string fileName)
+        // Вспомогательный метод для Задания 4
+        public static void FillTextFile(
+            string fileName, string content)
         {
-            int n = InputHelper.ReadInt(
-                "Кол-во учеников: ", false);
-            using (StreamWriter writer =
+            using (StreamWriter writer = 
                 new StreamWriter(fileName))
             {
-                for (int i = 0; i < n; i++)
+                writer.WriteLine(content);
+            }
+        }
+
+        // Вспомогательный метод для Задания 5
+        public static void FillStudentsFile(
+            string fileName, string[] lines)
+        {
+            using (StreamWriter writer = 
+                new StreamWriter(fileName))
+            {
+                for (int i = 0; i < lines.Length; i++)
                 {
-                    string surname =
-                        InputHelper.ReadString(
-                            $"Фамилия #{i + 1}: ");
-                    string name =
-                        InputHelper.ReadString(
-                            $"Имя #{i + 1}: ");
-                    writer.WriteLine(
-                        surname + " " + name);
+                    writer.WriteLine(lines[i]);
                 }
             }
-            Console.WriteLine(
-                "Файл " + fileName +
-                " заполнен.");
         }
     }
 }
