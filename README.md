@@ -146,8 +146,8 @@ ToString переопределён: формат ЧЧ:ММ через PadLeft(2
 не может быть отрицательным — проверка на уровне типа.
 
 ## ТЕСТИРОВАНИЕ
-![](https://sun9-16.vkuserphoto.ru/s/v1/ig2/5q9FZpkW3BNfqkjnoLb6nTZZwhJKrZO7pObc-mr0SyeIG7QjwNGBfBsnPZBSErsyHFXS1dMRpfAKG3WQo4kVoB0s.jpg?quality=95&as=32x15,48x22,72x33,108x50,160x74,240x111,306x141&from=bu&u=jaXyknnmBHeiX3-FnUqmYKOAbj6a6LeyjvRokkVbMsQ&cs=306x0)
-![](https://sun9-80.vkuserphoto.ru/s/v1/ig2/hM5UvLcaEh9CdzsosToWF-vsfDpYtbtIAUiwOonA8ZZWq9f5_AG4icHNmN982I7Eh5TtyE5x8E4CwtkIwtEWblz2.jpg?quality=95&as=32x18,48x27,72x41,108x61,160x90,240x135,305x172&from=bu&u=x_LNI1Z-QDdjDsgY42empCQFW8HpmIFPuCLh6Y7DWmc&cs=305x0)
+![](https://sun9-52.vkuserphoto.ru/s/v1/ig2/EV6ViWi8chxX3nu4A8i1_FfR6jp54RcSjWKeFhaeB60mfmBmKPKmLyF0V1fV-IsN2AXL__e3edVqdNVBezLMNbqH.jpg?quality=95&as=32x17,48x26,72x39,108x59,160x87,231x126&from=bu&u=BfgZV1dI-1HvyWy93-e87g1RvAqJU-Wgcg46rSsxYkc&cs=231x0)
+![](https://sun9-63.vkuserphoto.ru/s/v1/ig2/a-t-DxFcVPKy5gI_bdYX2w5xNPf5Dj_ZikZcASMx0yM-4vp3fXMjEMjKrWL0pXe-4nu6GOOzg7jt6pnL6XU7dXz4.jpg?quality=95&as=32x28,48x42,72x63,108x95,160x141,235x207&from=bu&cs=235x0)
 
 # ЗАДАНИЕ 7.
 
@@ -180,6 +180,6 @@ bool (неявное) — true, если часы и минуты не равн�
    так как потери данных нет.
 
 ## ТЕСТИРОВАНИЕ
-![](https://sun9-49.vkuserphoto.ru/s/v1/ig2/A5-MX7mrkhGf3bXeYbVRPqGYEofjLOlmZNGnQv1gZ8GEhMVpa8WGArj4PZy2JqgzWJxKGUg5U0sLnwXZ_7UK-YTk.jpg?quality=95&as=32x30,48x45,72x68,108x102,160x151,240x226,322x303&from=bu&u=Vbl68bdqGkP8V8J8UKlxv3fSEAmftExtVcFlCPDF6S4&cs=322x0)
+![](https://sun9-2.vkuserphoto.ru/s/v1/ig2/RJpM2pHP6u-MXw46pbhroc4oLoFcUqhNaKhoaQRuvi1DyjxExjXTVYqFDhYue87wEpFY97CD8hlTDsD2F-t3iT69.jpg?quality=95&as=32x42,48x62,72x94,108x140,160x208,200x260&from=bu&u=38iFS2XHiZxm_ljanO9M9O7ERpAp9IGXmELqb5dWE-s&cs=200x0)
 
 
